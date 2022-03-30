@@ -1,0 +1,51 @@
+#log-path = "./logs"
+# http-port = 80
+url-path = ""
+[compiler]
+name     = "gmanager"
+version  = "1.0.0"
+arch     = "amd64"
+system   = "linux"
+output   = ""
+path     = "./bin"
+extra    = "-ldflags \"-s -w\""
+
+# gtoken配置文件
+[gtoken]
+    # 缓存模式 1 gcache 2 gredis
+    cache-mode = 1
+    # 是否支持多端登录
+    multi-login = true
+
+[server]
+    Address          = ":8210"
+    ServerRoot       = "gmanager"
+    LogPath          = "./logs"
+#    IndexFiles       = ["index.php", "main.php"]
+    AccessLogEnabled = false
+    ErrorLogEnabled  = true
+    PProfEnabled     = true
+#    SessionIdName    = "MySessionId"
+#    SessionPath      = "/tmp/MySessionStoragePath"
+#    SessionMaxAge    = "24h"
+#    DumpRouterMap    = false
+
+# 全局日志配置
+[logger]
+    Path   = "./logs"
+    Level  = "all"
+    Stdout = true
+
+
+# title设置
+[setting]
+    title = "配置管理中心"
+
+# WebServer管理
+[admin]
+    user = "admin"
+    pass = "123"
+
+# 数据库配置
+[database]
+    link = "mysql:root:123456@tcp(127.0.0.1:3306)/gmanager"
