@@ -1,11 +1,12 @@
 package log
 
 import (
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/os/gtime"
-	"github.com/gogf/gf/util/gconv"
+	"context"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/service/log"
 	"gmanager/library/base"
 )
@@ -22,13 +23,13 @@ func (action *Action) Index(r *ghttp.Request) {
 	})
 
 	if err != nil {
-		glog.Error(err)
+		glog.Error(context.TODO(), err)
 	}
 }
 
 // path: /get/{id}
 func (action *Action) Get(r *ghttp.Request) {
-	id := r.GetInt64("id")
+	id := r.Get("id").Int64()
 	model, err := log.GetById(id)
 	if err != nil {
 		base.Fail(r, err.Error())
@@ -39,7 +40,7 @@ func (action *Action) Get(r *ghttp.Request) {
 
 // path: /delete/{id}
 func (action *Action) Delete(r *ghttp.Request) {
-	id := r.GetInt64("id")
+	id := r.Get("id").Int64()
 	_, err := log.Delete(id, base.GetUser(r).Id)
 	if err != nil {
 		base.Fail(r, err.Error())
@@ -48,7 +49,7 @@ func (action *Action) Delete(r *ghttp.Request) {
 	base.Succ(r, "")
 }
 func (action *Action) DeleteMany(r *ghttp.Request) {
-	var ids  = r.GetInts("ids")
+	var ids = r.Get("ids").Ints()
 	_, err := log.DeleteMany(ids)
 	if err != nil {
 		base.Fail(r, err.Error())
@@ -71,7 +72,7 @@ func (action *Action) Save(r *ghttp.Request) {
 	request := new(log.Request)
 	err := gconv.Struct(r.GetQueryMap(), request)
 	if err != nil {
-		glog.Error("save struct error", err)
+		glog.Error(context.TODO(), "save struct error", err)
 		base.Error(r, "save error")
 	}
 
@@ -90,7 +91,7 @@ func (action *Action) List(r *ghttp.Request) {
 
 	list, err := log.List(&form)
 	if err != nil {
-		glog.Error("page error", err)
+		glog.Error(context.TODO(), "page error", err)
 		base.Error(r, err.Error())
 	}
 
@@ -102,7 +103,7 @@ func (action *Action) Page(r *ghttp.Request) {
 	form := base.NewForm(r.GetQueryMap())
 	page, err := log.Page(&form)
 	if err != nil {
-		glog.Error("page error", err)
+		glog.Error(context.TODO(), "page error", err)
 		base.Error(r, err.Error())
 	}
 
@@ -120,7 +121,7 @@ func (action *Action) Jqgrid(r *ghttp.Request) {
 	form := base.NewForm(r.GetQueryMap())
 	page, err := log.Page(&form)
 	if err != nil {
-		glog.Error("jqgrid error", err)
+		glog.Error(context.TODO(), "jqgrid error", err)
 		base.Error(r, err.Error())
 	}
 

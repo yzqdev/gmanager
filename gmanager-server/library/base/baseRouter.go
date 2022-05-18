@@ -2,9 +2,9 @@ package base
 
 import (
 	"github.com/goflyfox/gtoken/gtoken"
-	"github.com/gogf/gf/encoding/gjson"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
+	"github.com/gogf/gf/v2/encoding/gjson"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
 	"gmanager/library/bean"
 	"gmanager/library/resp"
 )

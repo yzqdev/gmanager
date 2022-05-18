@@ -2,8 +2,8 @@ package log
 
 import (
 	"errors"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/component/started"
 	"gmanager/app/constants"
 	"gmanager/app/model/log"
@@ -55,7 +55,7 @@ func Delete(id int64, userId int) (int64, error) {
 	return r.RowsAffected()
 }
 
-func DeleteMany(ids []int) (int64,error) {
+func DeleteMany(ids []int) (int64, error) {
 	if len(ids) == 0 {
 		glog.Error("delete id error")
 		return 0, errors.New("参数不合法")
@@ -68,8 +68,7 @@ func DeleteMany(ids []int) (int64,error) {
 
 	return r.RowsAffected()
 }
-func DeleteAll() (int64,error) {
-
+func DeleteAll() (int64, error) {
 
 	r, err1 := log.Model.DeleteAll()
 	if err1 != nil {
@@ -78,6 +77,7 @@ func DeleteAll() (int64,error) {
 
 	return r.RowsAffected()
 }
+
 // 保存实体
 func Save(request *Request) (int64, error) {
 	entity := (*log.Entity)(nil)

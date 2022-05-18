@@ -1,9 +1,10 @@
 package config
 
 import (
+	"context"
 	"errors"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/constants"
 	"gmanager/app/model/config"
 	"gmanager/app/service/log"
@@ -20,7 +21,7 @@ type Request struct {
 // 通过id获取实体
 func GetById(id int64) (*config.Entity, error) {
 	if id <= 0 {
-		glog.Error(" get id error")
+		glog.Error(context.TODO(), " get id error")
 		return new(config.Entity), errors.New("参数不合法")
 	}
 
@@ -42,7 +43,7 @@ func GetOne(form *base.BaseForm) (*config.Entity, error) {
 // 删除实体
 func Delete(id int64, userId int) (int64, error) {
 	if id <= 0 {
-		glog.Error("delete id error")
+		glog.Error(context.TODO(), "delete id error")
 		return 0, errors.New("参数不合法")
 	}
 
@@ -116,7 +117,7 @@ func List(form *base.BaseForm) ([]*config.Entity, error) {
 // 分页查询
 func Page(form *base.BaseForm) ([]config.Entity, error) {
 	if form.Page <= 0 || form.Rows <= 0 {
-		glog.Error("page param error", form.Page, form.Rows)
+		glog.Error(context.TODO(), "page param error", form.Page, form.Rows)
 		return []config.Entity{}, nil
 	}
 
@@ -142,7 +143,7 @@ func Page(form *base.BaseForm) ([]config.Entity, error) {
 	form.TotalPage = num / form.Rows
 
 	if err != nil {
-		glog.Error("page count error", err)
+		glog.Error(context.TODO(), "page count error", err)
 		return []config.Entity{}, err
 	}
 
@@ -159,7 +160,7 @@ func Page(form *base.BaseForm) ([]config.Entity, error) {
 	dbModel = dbModel.LeftJoin("sys_user su2", " t.update_id = su2.id ")
 	err = dbModel.Where(where, params).Order(form.OrderBy).Page(form.Page, form.Rows).M.Structs(&resData)
 	if err != nil {
-		glog.Error("page list error", err)
+		glog.Error(context.TODO(), "page list error", err)
 		return []config.Entity{}, err
 	}
 

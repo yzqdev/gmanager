@@ -1,13 +1,13 @@
 package user
 
 import (
-	"github.com/gogf/gf/crypto/gmd5"
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/os/gtime"
-	"github.com/gogf/gf/text/gstr"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/crypto/gmd5"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/text/gstr"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/service/menu"
 	"gmanager/app/service/role"
 	"gmanager/app/service/user"
@@ -61,7 +61,7 @@ func (action *Action) Save(r *ghttp.Request) {
 		glog.Error("save struct error", err)
 		base.Error(r, "save error")
 	}
-//request.Password, _ =gmd5.Encrypt("123456")
+	//request.Password, _ =gmd5.Encrypt("123456")
 	request.UserId = base.GetUser(r).Id
 	_, err = user.Save(request)
 	if err != nil {

@@ -1,10 +1,11 @@
 package router
 
 import (
+	"context"
 	"github.com/goflyfox/gtoken/gtoken"
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
 	"gmanager/app/api/common"
 	"gmanager/app/api/config"
 	"gmanager/app/api/department"
@@ -35,17 +36,16 @@ func bindRouter() {
 	s.BindMiddleware(urlPath+"/*", middle.MiddlewareLog)
 	// 通用属性
 	s.BindMiddleware(urlPath+"/*", middle.MiddlewareCommon)
-	s.BindStatusHandler(404, func(r *ghttp.Request){
+	s.BindStatusHandler(404, func(r *ghttp.Request) {
 		r.Response.RedirectTo("/login")
 	})
 	// 首页
 	//s.BindHandler(urlPath+"/", common.Login)
 
-
-s.Group("/recover", func(group *ghttp.RouterGroup) {
-	group.GET(urlPath+"/get", common.GetUser)
-	group.POST(urlPath+"/post",common.RecoverPassword)
-})
+	s.Group("/recover", func(group *ghttp.RouterGroup) {
+		group.GET(urlPath+"/get", common.GetUser)
+		group.POST(urlPath+"/post", common.RecoverPassword)
+	})
 
 	s.Group(urlPath+"/system", func(g *ghttp.RouterGroup) {
 		// 系统路由
@@ -114,7 +114,7 @@ s.Group("/recover", func(group *ghttp.RouterGroup) {
 统一路由注册
 */
 func init() {
-	glog.Info("########router start...")
+	glog.Info(context.TODO(), "########router start...")
 
 	s := g.Server()
 
@@ -160,5 +160,5 @@ func init() {
 
 	started.StartLog()
 
-	glog.Info("########router finish.")
+	glog.Info(context.TODO(), "########router finish.")
 }

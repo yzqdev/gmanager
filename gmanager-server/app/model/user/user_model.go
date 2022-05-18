@@ -7,8 +7,8 @@ package user
 import (
 	"database/sql"
 	"fmt"
-	"github.com/gogf/gf/database/gdb"
-	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/gf/v2/database/gdb"
+	"github.com/gogf/gf/v2/frame/g"
 	"time"
 )
 
@@ -326,7 +326,7 @@ func (m *arModel) FindOne(where ...interface{}) (*Entity, error) {
 	if err = one.Struct(&entity); err != nil && err != sql.ErrNoRows {
 		return nil, err
 	}
-	fmt.Println(entity,"这是实体")
+	fmt.Println(entity, "这是实体")
 	return entity, nil
 }
 

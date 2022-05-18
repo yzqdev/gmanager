@@ -2,10 +2,10 @@ package user
 
 import (
 	"errors"
-	"github.com/gogf/gf/crypto/gmd5"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/text/gstr"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/crypto/gmd5"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/text/gstr"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/constants"
 	"gmanager/app/model/user"
 	"gmanager/app/model/user_role"
@@ -89,11 +89,11 @@ func Save(request *Request) (int64, error) {
 
 	// 判断新增还是修改
 	if entity.Id <= 0 {
-		salt:="salt"
+		salt := "salt"
 		entity.CreateId = request.UserId
 		entity.CreateTime = library.GetNow()
-		entity.Password, _ =gmd5.Encrypt("123456"+salt)
-		entity.Salt=salt
+		entity.Password, _ = gmd5.Encrypt("123456" + salt)
+		entity.Salt = salt
 
 		r, err := user.Model.Insert(entity)
 		if err != nil {

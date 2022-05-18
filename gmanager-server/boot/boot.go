@@ -1,9 +1,10 @@
 package boot
 
 import (
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
+	"context"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
 	"net/http"
 )
 
@@ -20,7 +21,7 @@ func CORS(r *ghttp.Request) {
 
 // 用于配置初始化.
 func init() {
-	glog.Info("########service start...")
+	glog.Info(context.TODO(), "########service start...")
 
 	v := g.View()
 	c := g.Config()
@@ -31,7 +32,7 @@ func init() {
 
 	v.AddPath("template")
 	glog.SetStdoutPrint(true)
-	s.SetNameToUriType(ghttp.URI_TYPE_ALLLOWER)
+	s.SetNameToUriType(ghttp.UriTypeAllLower)
 
-	glog.Info("########service finish.")
+	glog.Info(context.TODO(), "########service finish.")
 }

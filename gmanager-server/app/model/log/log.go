@@ -1,7 +1,7 @@
 package log
 
 import (
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/util/gconv"
 )
 
 // Fill with you ideas below.

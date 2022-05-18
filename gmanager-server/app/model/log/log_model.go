@@ -6,8 +6,8 @@ package log
 
 import (
 	"database/sql"
-	"github.com/gogf/gf/database/gdb"
-	"github.com/gogf/gf/frame/g"
+	"github.com/gogf/gf/v2/database/gdb"
+	"github.com/gogf/gf/v2/frame/g"
 	"time"
 )
 
@@ -21,7 +21,7 @@ var (
 	Table = "sys_log"
 	// Model is the model object of sys_log.
 	Model = &arModel{g.DB("default").Table(Table).Safe()}
-	db =g.DB()
+	db    = g.DB()
 )
 
 // FindOne is a convenience method for Model.FindOne.
@@ -267,9 +267,10 @@ func (m *arModel) Delete(where ...interface{}) (result sql.Result, err error) {
 
 // DeleteAll 删除所有
 
-func (m *arModel) DeleteAll() (result sql.Result,err error)  {
+func (m *arModel) DeleteAll() (result sql.Result, err error) {
 	return db.Exec("truncate table sys_log;")
 }
+
 // Count does "SELECT COUNT(x) FROM ..." statement for the model.
 // The optional parameter <where> is the same as the parameter of Model.Where function,
 // see Model.Where.

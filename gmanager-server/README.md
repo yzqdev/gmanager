@@ -88,7 +88,7 @@ go build main.go
 
 ## 感谢
 
-1. gf框架 [https://github.com/gogf/gf](https://github.com/gogf/gf) 
+1. gf框架 [https://github.com/gogf/gf/v2](https://github.com/gogf/gf/v2) 
 
 ## 项目支持
 

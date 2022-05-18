@@ -2,11 +2,11 @@ package middle
 
 import (
 	"fmt"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/os/gtime"
-	"github.com/gogf/gf/text/gstr"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/os/gtime"
+	"github.com/gogf/gf/v2/text/gstr"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/constants"
 	"gmanager/library/base"
 )
@@ -25,7 +25,7 @@ func MiddlewareLog(r *ghttp.Request) {
 
 		if r.Method == "GET" {
 			params = r.GetQueryMap()
-		} else if r.Method == "POST"||r.Method == "DELETE" {
+		} else if r.Method == "POST" || r.Method == "DELETE" {
 			params = r.GetQueryMap()
 		} else {
 			base.Error(r, "Request Method is ERROR! ")
@@ -74,7 +74,6 @@ func MiddlewareCommon(r *ghttp.Request) {
 	r.Middleware.Next()
 }
 
-func swagger()  {
-	
-}
+func swagger() {
 
+}

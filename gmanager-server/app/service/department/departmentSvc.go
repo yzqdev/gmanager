@@ -3,8 +3,8 @@ package department
 import (
 	"errors"
 	"fmt"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/constants"
 	"gmanager/app/model/department"
 	"gmanager/app/service/log"
@@ -78,7 +78,7 @@ func Save(request *Request) (int64, error) {
 
 	entity.UpdateId = request.UserId
 	entity.UpdateTime = library.GetNow()
-fmt.Println(entity.Enable,"组织有问题i")
+	fmt.Println(entity.Enable, "组织有问题i")
 	// 判断新增还是修改
 	if entity.Id <= 0 {
 		entity.CreateId = request.UserId

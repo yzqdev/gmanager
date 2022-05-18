@@ -6,7 +6,7 @@ package user
 
 import (
 	"database/sql"
-	"github.com/gogf/gf/database/gdb"
+	"github.com/gogf/gf/v2/database/gdb"
 )
 
 // Entity is the golang structure for table sys_user.

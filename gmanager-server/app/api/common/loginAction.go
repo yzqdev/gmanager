@@ -2,10 +2,10 @@ package common
 
 import (
 	"fmt"
-	"github.com/gogf/gf/crypto/gmd5"
-	"github.com/gogf/gf/net/ghttp"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/crypto/gmd5"
+	"github.com/gogf/gf/v2/net/ghttp"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/util/gconv"
 	"gmanager/app/constants"
 	"gmanager/app/service/log"
 	"gmanager/app/service/user"
@@ -32,7 +32,6 @@ type Recover struct {
 // @Param id path int true "Account ID"
 // @Header 200 {string} Token "qwerty"
 // @Router /accounts/{id} [get]
-
 
 // 修改当前用户密码
 func RecoverPassword(r *ghttp.Request) {
